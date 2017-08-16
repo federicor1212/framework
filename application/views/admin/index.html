@@ -1,0 +1,45 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script src="public/js/Books.js" type="text/javascript"></script>
+<link rel="stylesheet" href="public/css/style.css" type="text/css">
+
+<html>
+<head>
+	<title>Books List</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+</head>
+<body>
+	<h1>BOOKS INFORMATION</h1>
+	<table class="data-table">
+		<thead>
+			<tr>
+				<th>ID</th>
+				<th>BOOK NAME</th>
+				<th>BOOK ISBN</th>
+			</tr>
+		</thead>
+		<tbody>
+		<?php
+			$total 	= 0;
+			foreach ($_GET['books'] as $row) 
+			{
+				echo '<tr>
+						<td>'.$row['id'].'</td>
+						<td>'.$row['book_name'].'</td>
+						<td>'.$row['book_isbn'].'</td>
+					</tr>';
+				$total=$total+1;
+			}
+		?>
+		</tbody>
+		<tfoot>
+			<tr>
+				<th colspan="4">TOTAL</th>
+				<th><?=number_format($total)?></th>
+			</tr>
+		</tfoot>
+	</table>
+	<button type="button" class="button" id="ajaxCall">Load with ajax Call</button>
+	<div id="ajaxResult"></div>
+</body>
+</html>
